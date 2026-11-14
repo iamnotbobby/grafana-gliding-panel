@@ -71,4 +71,4 @@ e2e conventions are in [.config/AGENTS/instructions.md](.config/AGENTS/instructi
 [.config/AGENTS/e2e-testing.md](.config/AGENTS/e2e-testing.md). In short: leave `.config/`
 untouched, keep the plugin id and type, and restart Grafana after editing `src/plugin.json`.
 
-Disclaimer: This was created with the assistance of AI for end-to-end validation
+Disclaimer: This was created with the assistance of AI for end-to-end validation.
