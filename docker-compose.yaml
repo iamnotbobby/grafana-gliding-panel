@@ -1,0 +1,29 @@
+# Local test stack. See "Quick start" in README.md.
+services:
+  grafana:
+    extends:
+      file: .config/docker-compose-base.yaml
+      service: grafana
+    build:
+      args:
+        grafana_image: ${GRAFANA_IMAGE:-grafana}
+        grafana_version: ${GRAFANA_VERSION:-13.3.1}
+    environment:
+      # The test dashboard refreshes every second; Grafana's default minimum is 5 s.
+      GF_DASHBOARDS_MIN_REFRESH_INTERVAL: 1s
+      GF_AUTH_ANONYMOUS_ENABLED: 'true'
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+    depends_on:
+      - victoriametrics
+
+  victoriametrics:
+    image: victoriametrics/victoria-metrics:v1.156.0
+    container_name: 'bobby-glide-vm'
+    command:
+      - -selfScrapeInterval=1s
+      # Same margin as production: never return samples newer than now-2s.
+      - -search.latencyOffset=2s
+      - -retentionPeriod=1d
+      - -httpListenAddr=:8428
+    ports:
+      - 8428:8428/tcp

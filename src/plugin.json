@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "panel",
+  "name": "Glide time series",
+  "id": "bobby-glide-panel",
+  "info": {
+    "keywords": ["panel", "time series", "timeseries", "graph", "realtime", "live", "smooth", "streaming", "glide"],
+    "description": "Live time series that glide: the time axis scrolls continuously between refreshes instead of redrawing in steps.",
+    "author": {
+      "name": "bobby"
+    },
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "links": [],
+    "screenshots": [],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+  "dependencies": {
+    "grafanaDependency": ">=13.0.0",
+    "plugins": []
+  }
+}
